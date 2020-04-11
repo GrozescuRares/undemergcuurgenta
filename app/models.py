@@ -33,13 +33,3 @@ class ServiceUnit(BaseModel):
 
     def __str__(self):
         return f"Medical unit {self.name}: category {self.category.name}; location {self.location.name}; verified {self.verified}."
-
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-
-        img = Image.open(self.image.path)
-
-        if img.height > 300 or img.width > 300:
-            output_size = (300, 300)
-            img.thumbnail(output_size)
-            img.save(self.image.path)
