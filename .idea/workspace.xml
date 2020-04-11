@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c1ff872-c0cb-4a99-a10b-3f59c93e79a3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2e9a8d64-66e0-4eba-8c82-9565ce66c603.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2e9a8d64-66e0-4eba-8c82-9565ce66c603.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_project/asgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_project/asgi.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/django_project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_project/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_project/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_project/wsgi.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,10 +57,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="693" y="357" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586609687911">
+    <state x="693" y="357" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586632829323">
       <screen x="65" y="24" width="1855" height="1069" />
     </state>
-    <state x="693" y="357" key="#com.intellij.fileTypes.FileTypeChooser/65.24.1855.1069/1920.0.1920.1080@65.24.1855.1069" timestamp="1586609687911" />
+    <state x="693" y="357" key="#com.intellij.fileTypes.FileTypeChooser/65.24.1855.1069/1920.0.1920.1080@65.24.1855.1069" timestamp="1586632829323" />
     <state x="730" y="301" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1586628686499">
       <screen x="65" y="24" width="1855" height="1069" />
     </state>
