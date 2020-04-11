@@ -1,15 +1,15 @@
 from django_filters.views import FilterView
 
-from app.filters import MedicalUnitFilter
-from app.models import MedicalUnit
+from app.filters import ServiceUnitFilter
+from app.models import ServiceUnit
 
 
-class MedicalUnitListView(FilterView):
+class ServiceUnitListView(FilterView):
     """
         Renders a list view with all verified MedicalUnits ordered desc by created_at field.
     """
     template_name = 'medical'
     template_name_suffix = '_list'
-    filterset_class = MedicalUnitFilter
+    filterset_class = ServiceUnitFilter
     ordering = '-created_at'
-    queryset = MedicalUnit.objects.filter(verified=True)
+    queryset = ServiceUnit.objects.filter(verified=True)

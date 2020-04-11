@@ -1,8 +1,8 @@
 from django.contrib import admin
 
-from app.models import MedicalUnitLocation, MedicalUnitCategory, MedicalUnit
+from app.models import ServiceUnitLocation, ServiceUnitCategory, ServiceUnit
 
 
-admin.site.register(MedicalUnitLocation)
-admin.site.register(MedicalUnitCategory)
-admin.site.register(MedicalUnit)
+admin.site.register(ServiceUnitLocation)
+admin.site.register(ServiceUnitCategory)
+admin.site.register(ServiceUnit)

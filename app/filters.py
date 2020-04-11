@@ -1,9 +1,19 @@
 from django_filters import FilterSet, CharFilter
 
-from app.models import MedicalUnit
+from app.models import ServiceUnit
 
 
-class MedicalUnitFilter(FilterSet):
+class ServiceUnitFilter(FilterSet):
     class Meta:
-        model = MedicalUnit
-        fields = ['category', 'location']
+        model = ServiceUnit
+        fields = {
+            'category': ['exact'],
+            'location': ['exact'],
+            'tags': ['contains'],
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(ServiceUnitFilter, self).__init__(*args, **kwargs)
+        self.filters['category'].label = "Categorie"
+        self.filters['location'].label = "Locatie"
+        self.filters['tags__contains'].label = "Servicii/Produse cautate"
