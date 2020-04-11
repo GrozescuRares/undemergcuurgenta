@@ -10,6 +10,7 @@ django = "*"
 django-filter = "*"
 pillow = "*"
 gunicorn = "*"
+django-heroku = "*"
 
 [requires]
 python_version = "3.8"
