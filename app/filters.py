@@ -1,4 +1,4 @@
-from django_filters import FilterSet
+from django_filters import FilterSet, CharFilter
 
 from app.models import MedicalUnit
 

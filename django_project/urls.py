@@ -20,5 +20,5 @@ from app.views import MedicalUnitListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('medical-units/', MedicalUnitListView.as_view(), name='medical-units')
+    path('', MedicalUnitListView.as_view(), name='medical-units')
 ]
