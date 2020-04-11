@@ -16,6 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from app.views import MedicalUnitListView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('medical-units/', MedicalUnitListView.as_view(), name='medical-units')
 ]
