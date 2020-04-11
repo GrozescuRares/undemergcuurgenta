@@ -1,0 +1,17 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+    {% if filter.qs|length == 0 %}
+        <h1>Nu avem</h1>
+    {% else %}
+        <ul>
+            {% for medical_unit in filter.qs %}
+            <li>{{ medical_unit.name }} <img src="{{ medical_unit.image.url }}"></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <form method="get">
+        {{ filter.form }}
+        <input type="submit"/>
+    </form>
+{% endblock %}
