@@ -34,8 +34,8 @@ class ServiceUnit(BaseModel):
     def __str__(self):
         return f"Medical unit {self.name}: category {self.category.name}; location {self.location.name}; verified {self.verified}."
 
-    def save(self):
-        super().save()
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
 
         img = Image.open(self.image.path)
 
