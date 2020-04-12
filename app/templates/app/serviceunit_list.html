@@ -1,6 +1,7 @@
 {% extends 'app/base.html' %}
 {% block content %}
 {% load static %}
+{% load i18n %}
 
 <section class="withBackgroundColor">
     <div class="section section-search">
@@ -37,21 +38,20 @@
 <section class="px-15">
     <div class="section section-results-counter">
         <div class="section-results-counter-labels">
-            <h3 class="heading font-md font-bold withSecondaryColor mb-1">Noi in numere</h3>
-            <h1 class="heading font-1xl font-bold withPrimaryColor mb-0">Momentan avem disponibil:</h1>
-            <i>Ultima actualizare: <strong>12 Aprilie 2020, 20:30</strong></i>
+            <h1 class="heading font-1xl font-bold withPrimaryColor mb-0">Momentan avem date pentru:</h1>
+            <i>Ultima actualizare: <strong>{% language 'ro-ro' %} {{ filter.qs.first.created_at}} {% endlanguage %}</strong></i>
         </div>
         <div class="section-results-item section-results-category">
             <img src="{% static 'app/images/hotel.svg' %}" class="img-fluid" alt="">
             <div>
-                <h2 class="m-0 heading font-1xl font-bold withCategoriesColor">379</h2>
-                <p class="mb-0">orase</p>
+                <h2 class="m-0 heading font-1xl font-bold withCategoriesColor">{{ filter.form.location|length|add:"-1" }}</h2>
+                <p class="mb-0">locatii</p>
             </div>
         </div>
         <div class="section-results-item section-results-cities">
             <img src="{% static 'app/images/category.svg' %}" class="img-fluid" alt="">
             <div>
-                <h2 class="m-0 heading font-1xl font-bold withCitiesColor">15</h2>
+                <h2 class="m-0 heading font-1xl font-bold withCitiesColor">{{ filter.form.category|length|add:"-1"}}</h2>
                 <p class="mb-0">categorii</p>
             </div>
         </div>
@@ -60,26 +60,26 @@
 
 <section class="section section-search-results">
     {% if filter.qs|length == 0 %}
-    <h1>Nu avem 😥</h1>
+    <h1>Nu avem niciun rezultat pentru filtrele aplicate 😥</h1>
 
     {% else %}
 
     <ul class="search-results-items">
-        {% for medical_unit in filter.qs %}
+        {% for service_unit in filter.qs %}
         <li class="search-item">
-            <img alt="" src="{{ medical_unit.image.url }}">
+            <img alt="" src="{{ service_unit.image.url }}">
             <ul class="tag-list mb-1">
-                <li class="tag-item">{{ medical_unit.location }}</li>
-                <li class="tag-item">{{ medical_unit.category }}</li>
-                <li class="tag-item">{{ medical_unit.tags }}</li>
+                <li class="tag-item">{{ service_unit.location }}</li>
+                <li class="tag-item">{{ service_unit.category }}</li>
+                <li class="tag-item">{{ service_unit.tags }}</li>
             </ul>
-            <h3 class="font-1xl font-primary withPrimaryColor font-bold mb-3 mt-0 text-center">{{ medical_unit.name }}</h3>
+            <h3 class="font-1xl font-primary withPrimaryColor font-bold mb-3 mt-0 text-center">{{ service_unit.name }}</h3>
             <p class="schedule">
                 <img src="{% static 'app/images/calendar.svg' %}" class="img-fluid" alt="">
-                {{ medical_unit.schedule }}
+                {{ service_unit.schedule }}
             </p>
             <p class="verify">
-                {% if medical_unit.verified == True %}
+                {% if service_unit.verified == True %}
                     <img src="{% static 'app/images/check.svg' %}" alt="">
                     Verificat
                 {% else %}
@@ -89,7 +89,7 @@
 
             </p>
             <div class="text-center">
-                <a href="{{ medical_unit.link }}" class="btn btn-secondary" target="_blank">Mergi la site</a>
+                <a href="{{ service_unit.link }}" class="btn btn-secondary" target="_blank">Detalii suplimentare</a>
             </div>
         </li>
         {% endfor %}
