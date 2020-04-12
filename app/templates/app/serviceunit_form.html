@@ -1,0 +1,11 @@
+{% extends 'app/base.html' %}
+{% load i18n %}
+
+{% block content %}
+    {% language 'ro-ro' %}
+    <form method="post" novalidate>{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save">
+    {% endlanguage %}
+</form>
+{% endblock %}

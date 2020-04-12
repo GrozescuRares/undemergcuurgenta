@@ -18,11 +18,12 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from app.views import ServiceUnitListView
+from app.views import ServiceUnitListView, ServiceUnitCreateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', ServiceUnitListView.as_view(), name='medical-units')
+    path('', ServiceUnitListView.as_view(), name='service-units'),
+    path('service-unit/create', ServiceUnitCreateView.as_view(), name='service-unit-create'),
 ]
 
 if settings.DEBUG:

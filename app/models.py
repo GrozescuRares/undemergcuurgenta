@@ -23,12 +23,12 @@ class ServiceUnitCategory(BaseModel):
 
 
 class ServiceUnit(BaseModel):
-    location = models.ForeignKey(ServiceUnitLocation, on_delete=models.CASCADE)
-    category = models.ForeignKey(ServiceUnitCategory, on_delete=models.CASCADE)
-    tags = models.TextField()
+    location = models.ForeignKey(ServiceUnitLocation, on_delete=models.CASCADE, verbose_name='Locatie')
+    category = models.ForeignKey(ServiceUnitCategory, on_delete=models.CASCADE, verbose_name='Categoria')
+    tags = models.TextField(verbose_name='Ce se gaseste acolo')
     image = models.ImageField(default='default.jpg', upload_to='pictures')
-    schedule = models.CharField(max_length=250)
-    link = models.CharField(max_length=100)
+    schedule = models.CharField(max_length=250, verbose_name='Program de functionare')
+    link = models.URLField(max_length=100)
     verified = models.BooleanField(default=False)
 
     def __str__(self):

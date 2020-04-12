@@ -1,3 +1,6 @@
+from django.contrib import messages
+from django.urls import reverse
+from django.views.generic import CreateView
 from django_filters.views import FilterView
 
 from app.filters import ServiceUnitFilter
@@ -12,3 +15,16 @@ class ServiceUnitListView(FilterView):
     filterset_class = ServiceUnitFilter
     ordering = '-created_at'
     queryset = ServiceUnit.objects.filter(verified=True)
+
+
+class ServiceUnitCreateView(CreateView):
+    model = ServiceUnit
+    fields = ['name', 'location', 'category', 'tags', 'schedule', 'link']
+
+    def get_success_url(self):
+        return reverse('service-units')
+
+    def form_valid(self, form):
+        messages.success(self.request, f'Your account has been updated!')
+
+        return super().form_valid(form)
