@@ -8,7 +8,6 @@ class ServiceUnitListView(FilterView):
     """
         Renders a list view with all verified MedicalUnits ordered desc by created_at field.
     """
-    template_name = 'medical'
     template_name_suffix = '_list'
     filterset_class = ServiceUnitFilter
     ordering = '-created_at'
