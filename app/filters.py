@@ -15,5 +15,6 @@ class ServiceUnitFilter(FilterSet):
     def __init__(self, *args, **kwargs):
         super(ServiceUnitFilter, self).__init__(*args, **kwargs)
         self.filters['category'].label = "Categorie"
+        self.filters['category'].label = "Categorie"
         self.filters['location'].label = "Locatie"
         self.filters['tags__contains'].label = "Servicii/Produse cautate"
