@@ -25,6 +25,6 @@ class ServiceUnitCreateView(CreateView):
         return reverse('service-units')
 
     def form_valid(self, form):
-        messages.success(self.request, f'Your account has been updated!')
+        messages.success(self.request, f'Multumim pentru sugestie! O vom analiza cat de repede posibil.')
 
         return super().form_valid(form)

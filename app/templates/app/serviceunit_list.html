@@ -10,20 +10,16 @@
                 <h3 class="heading font-md font-bold withSecondaryColor mb-1">Esti curios unde gasesti ceva ?</h3>
                 <h1 class="heading font-1xl font-bold withPrimaryColor mb-2">Unde gasesc e aici sa te ajute</h1>
                 <p>
-                    Pentru ca stim cat e de greu sa gasesti lucruri sau servicii de care ai nevoie in aceasta perioada, noi am incercat sa punem totul intr-un singur loc.
+                    Pentru ca stim cat e de greu sa gasesti lucruri sau servicii de care ai nevoie in <strong class="withSecondaryColor">aceasta perioada</strong>, noi am incercat sa punem totul intr-un singur loc.
                     <br>
                     Stii si tu un loc in care se pot gasi lucruri sau care ofera anumite servicii?
                     <a class="btn btn-primary" href="{% url 'service-unit-create' %}">Anunta-ne</a>
                 </p>
             </div>
             <form method="get" class="section-search-form">
-                <div class="form-group">
-                    <label class="font-lg font-primary withPrimaryColor font-bold mb-1 pl-1">Unde gasesc</label>
-                    {{ filter.form.tags__contains }}
-                </div>
                 <div class="form-group-wrapper">
                     <div class="form-group">
-                        <label class="font-lg font-primary withPrimaryColor font-bold mb-1 pl-1">la:</label>
+                        <label class="font-lg font-primary withPrimaryColor font-bold mb-1 pl-1">Unde gasesc:</label>
                         {{ filter.form.category }}
                     </div>
                     <div class="form-group">
@@ -50,14 +46,14 @@
         <div class="section-results-item section-results-category">
             <img src="{% static 'app/images/hotel.svg' %}" class="img-fluid" alt="">
             <div>
-                <h2 class="m-0 heading font-1xl font-bold withCategoriesColor">{{ filter.form.location|length|add:"-1" }}</h2>
+                <h2 class="m-0 heading font-1xl font-bold withCitiesColor">{% regroup filter.qs by location as locations %}{{ locations|length }}</h2>
                 <p class="mb-0">locatii</p>
             </div>
         </div>
         <div class="section-results-item section-results-cities">
             <img src="{% static 'app/images/category.svg' %}" class="img-fluid" alt="">
             <div>
-                <h2 class="m-0 heading font-1xl font-bold withCitiesColor">{{ filter.form.category|length|add:"-1"}}</h2>
+                <h2 class="m-0 heading font-1xl font-bold withCategoriesColor">{% regroup filter.qs by category as categories %}{{ categories|length }}</h2>
                 <p class="mb-0">categorii</p>
             </div>
         </div>
