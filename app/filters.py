@@ -10,8 +10,3 @@ class ServiceUnitFilter(FilterSet):
             'category': ['exact'],
             'location': ['exact'],
         }
-
-    def __init__(self, *args, **kwargs):
-        super(ServiceUnitFilter, self).__init__(*args, **kwargs)
-        self.filters['category'].label = "Categorie"
-        self.filters['location'].label = "Locatie"

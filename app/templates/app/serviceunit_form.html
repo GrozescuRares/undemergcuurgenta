@@ -2,10 +2,87 @@
 {% load i18n %}
 
 {% block content %}
-    {% language 'ro-ro' %}
-    <form method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Save">
-    {% endlanguage %}
-</form>
+<section class="withBackgroundColor contact-form">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+                {% language 'ro-ro' %}
+                <form method="post" class="needs-validation">
+                        <h1 class="heading font-1xl font-bold withSecondaryColor mb-4">Detalii despre loc</h1>
+                    <br>
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label class="font-lg font-primary withPrimaryColor font-bold mb-0 pl-3">
+                            Nume
+                        </label>
+                        {{ form.name }}
+                        <div class="invalid-feedback pl-3">
+                            {{ form.name.errors }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="font-lg font-primary withPrimaryColor font-bold mb-0 pl-3">
+                                    Locatie
+                                </label>
+                                {{ form.location }}
+                                <div class="invalid-feedback pl-3">
+                                    {{ form.location.errors }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="font-lg font-primary withPrimaryColor font-bold mb-0 pl-3">
+                                    Categorie
+                                </label>
+                                {{ form.category }}
+                                <div class="invalid-feedback pl-3">
+                                    {{ form.category.errors }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="font-lg font-primary withPrimaryColor font-bold mb-0 pl-3">
+                                    Program de functionare
+                                </label>
+                                {{ form.schedule }}
+                                <div class="invalid-feedback pl-3">
+                                    {{ form.schedule.errors }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="font-lg font-primary withPrimaryColor font-bold mb-0 pl-3">
+                                    Link site / social media
+                                </label>
+                                {{ form.link }}
+                                <div class="invalid-feedback pl-3">
+                                    {{ form.link.errors }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-lg font-primary withPrimaryColor font-bold mb-0 pl-3">
+                            Ce se gaseste acolo
+                        </label>
+                        {{ form.tags }}
+                        <div class="invalid-feedback pl-3">
+                            <p>{{ form.tags.errors }}</p>
+                        </div>
+                    </div>
+                    <input type="submit" class="btn btn-primary mx-auto d-block" value="Trimite">
+                </form>
+                {% endlanguage %}
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}
