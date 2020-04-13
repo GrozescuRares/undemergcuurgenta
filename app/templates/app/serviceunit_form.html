@@ -5,13 +5,16 @@
 <section class="withBackgroundColor contact-form">
     <div class="container">
         <div class="row">
+
             <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
                 {% language 'ro-ro' %}
                 <form method="post" class="needs-validation">
+                        <h1 class="heading font-1xl font-bold withSecondaryColor mb-4">Detalii despre loc</h1>
+                    <br>
                     {% csrf_token %}
                     <div class="form-group">
                         <label class="font-lg font-primary withPrimaryColor font-bold mb-0 pl-3">
-                            {{ form.name.label }}
+                            Nume
                         </label>
                         {{ form.name }}
                         <div class="invalid-feedback pl-3">
@@ -22,7 +25,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="font-lg font-primary withPrimaryColor font-bold mb-0 pl-3">
-                                    {{ form.location.label }}
+                                    Locatie
                                 </label>
                                 {{ form.location }}
                                 <div class="invalid-feedback pl-3">
@@ -33,7 +36,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="font-lg font-primary withPrimaryColor font-bold mb-0 pl-3">
-                                    {{ form.category.label }}
+                                    Categorie
                                 </label>
                                 {{ form.category }}
                                 <div class="invalid-feedback pl-3">
@@ -46,7 +49,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="font-lg font-primary withPrimaryColor font-bold mb-0 pl-3">
-                                    {{ form.schedule.label }}
+                                    Program de functionare
                                 </label>
                                 {{ form.schedule }}
                                 <div class="invalid-feedback pl-3">
@@ -57,7 +60,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="font-lg font-primary withPrimaryColor font-bold mb-0 pl-3">
-                                    {{ form.link.label }}
+                                    Link site / social media
                                 </label>
                                 {{ form.link }}
                                 <div class="invalid-feedback pl-3">
@@ -68,11 +71,11 @@
                     </div>
                     <div class="form-group">
                         <label class="font-lg font-primary withPrimaryColor font-bold mb-0 pl-3">
-                            {{ form.tags.label }}
+                            Ce se gaseste acolo
                         </label>
                         {{ form.tags }}
                         <div class="invalid-feedback pl-3">
-                            {{ form.tags.errors }}
+                            <p>{{ form.tags.errors }}</p>
                         </div>
                     </div>
                     <input type="submit" class="btn btn-primary mx-auto d-block" value="Trimite">

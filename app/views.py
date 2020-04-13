@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.views.generic import CreateView
 from django_filters.views import FilterView
 
+from app.constants import THANK_YOU_MESSAGE
 from app.filters import ServiceUnitFilter
 from app.models import ServiceUnit
 
@@ -25,6 +26,6 @@ class ServiceUnitCreateView(CreateView):
         return reverse('service-units')
 
     def form_valid(self, form):
-        messages.success(self.request, f'Multumim pentru sugestie! O vom analiza cat de repede posibil.')
+        messages.success(self.request, THANK_YOU_MESSAGE.format(form.cleaned_data['name'], form.cleaned_data['location'].name))
 
         return super().form_valid(form)

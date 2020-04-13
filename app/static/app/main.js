@@ -7,10 +7,9 @@ $( document ).ready(function() {
     $("#id_location").val($("#target option:first").val());
   });
 
-  var btn = $('#backToTop');
+  let btn = $('#backToTop');
 
   $(window).scroll(function() {
-    console.log('in');
     if ($(window).scrollTop() > 300) {
       btn.addClass('show');
     } else {
@@ -18,14 +17,11 @@ $( document ).ready(function() {
     }
   });
 
-  btn.on('click', function(e) {
-    e.preventDefault();
+  btn.on('click', function(event) {
+    event.preventDefault();
+
     $('html, body').animate({scrollTop:0}, '300');
   });
-
-
-
-
 });
 
 $(window).on('load',function(){

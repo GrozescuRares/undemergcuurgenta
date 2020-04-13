@@ -336,3 +336,5 @@ CATEGORIES = (
     'Cabinet veterinar',
     'Biserica',
 )
+
+THANK_YOU_MESSAGE = 'Multumim pentru sugestie! Vom analiza {0} din {1} cat de repede posibil.'
