@@ -2,6 +2,7 @@
 {% block content %}
 {% load static %}
 {% load i18n %}
+{% load social_share %}
 
 <section class="withBackgroundColor withBackgroundImage" style="background-image: url({% static 'app/images/icon.svg' %})">
     <div class="section section-search container">
@@ -14,6 +15,8 @@
                     <br>
                     Stii si tu un loc in care se pot gasi lucruri sau care ofera anumite servicii?
                     <a class="btn btn-primary btn-small align-top" href="{% url 'service-unit-create' %}">Anunta-ne</a>
+                    <br>
+                    Vrei sa ne ajuti sa strangem cat mai multe date? <strong class="withSecondaryColor"> Da de stire pe </strong>{% post_to_facebook 'http://www.undegasescacum.ro' %}
                 </p>
             </div>
             <form method="get" class="section-search-form">

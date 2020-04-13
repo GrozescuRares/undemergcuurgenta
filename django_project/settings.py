@@ -34,6 +34,8 @@ ALLOWED_HOSTS = ['undegasesc.herokuapp.com']
 INSTALLED_APPS = [
     'app.apps.AppConfig',
     'django_filters',
+    'django_social_share',
+    'google_analytics',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -135,5 +137,9 @@ AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 AWS_QUERYSTRING_AUTH = False
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+GOOGLE_ANALYTICS = {
+    'google_analytics_id': os.environ.get('GOOGLE_ANALYTICS_CODE'),
+}
 
 django_heroku.settings(locals())

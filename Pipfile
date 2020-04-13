@@ -13,6 +13,8 @@ gunicorn = "*"
 django-heroku = "*"
 boto3 = "*"
 django-storages = "*"
+django-social-share = "*"
+django-google-analytics-app = "*"
 
 [requires]
 python_version = "3.8"
