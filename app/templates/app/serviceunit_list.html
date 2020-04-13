@@ -46,14 +46,14 @@
         <div class="section-results-item section-results-category">
             <img src="{% static 'app/images/hotel.svg' %}" class="img-fluid" alt="">
             <div>
-                <h2 class="m-0 heading font-1xl font-bold withCitiesColor">{% regroup filter.qs by location as locations %}{{ locations|length }}</h2>
+                <h2 class="m-0 heading font-1xl font-bold withCitiesColor">{{ unique_locations }}</h2>
                 <p class="mb-0">locatii</p>
             </div>
         </div>
         <div class="section-results-item section-results-cities">
             <img src="{% static 'app/images/category.svg' %}" class="img-fluid" alt="">
             <div>
-                <h2 class="m-0 heading font-1xl font-bold withCategoriesColor">{% regroup filter.qs by category as categories %}{{ categories|length }}</h2>
+                <h2 class="m-0 heading font-1xl font-bold withCategoriesColor">{{ unique_categories }}</h2>
                 <p class="mb-0">categorii</p>
             </div>
         </div>

@@ -5,6 +5,7 @@ from django_filters.views import FilterView
 
 from app.constants import THANK_YOU_MESSAGE
 from app.filters import ServiceUnitFilter
+from app.helpers import BaseHelper
 from app.models import ServiceUnit
 
 
@@ -16,6 +17,15 @@ class ServiceUnitListView(FilterView):
     filterset_class = ServiceUnitFilter
     ordering = '-created_at'
     queryset = ServiceUnit.objects.filter(verified=True)
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(ServiceUnitListView, self).get_context_data(**kwargs)
+        context.update({
+            'unique_locations': BaseHelper.get_unique_count(object_list, 'location', 'name'),
+            'unique_categories': BaseHelper.get_unique_count(object_list, 'category', 'name'),
+        })
+
+        return context
 
 
 class ServiceUnitCreateView(CreateView):
