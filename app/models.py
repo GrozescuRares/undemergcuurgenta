@@ -34,7 +34,9 @@ class ServiceUnit(BaseModel):
     verified = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"Medical unit {self.name}: category {self.category.name}; location {self.location.name}; verified {self.verified}."
+        status = 'Aprobat' if self.verified else 'Trebuie verificat'
+
+        return f"Nume: {self.name}; Categoria: {self.category.name}; Locatia: {self.location.name}; Status: { status }."
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
