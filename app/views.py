@@ -20,7 +20,7 @@ class ServiceUnitListView(FilterView):
 
 class ServiceUnitCreateView(CreateView):
     model = ServiceUnit
-    fields = ['name', 'location', 'category', 'tags', 'schedule', 'link']
+    fields = ['name', 'location', 'category', 'tags', 'schedule', 'link', 'image']
 
     def get_success_url(self):
         return reverse('service-units')

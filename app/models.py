@@ -1,3 +1,5 @@
+import io
+from django.core.files.storage import default_storage as storage
 from django.db import models
 from django.utils import timezone
 from PIL import Image
@@ -32,4 +34,23 @@ class ServiceUnit(BaseModel):
     verified = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"Medical unit {self.name}: category {self.category.name}; location {self.location.name}; verified {self.verified}."
+        status = 'Aprobat' if self.verified else 'Trebuie verificat'
+
+        return f"Nume: {self.name}; Categoria: {self.category.name}; Locatia: {self.location.name}; Status: { status }."
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+        img_read = storage.open(self.image.name, 'rb')
+        img = Image.open(img_read)
+
+        if img.height > 300 or img.width > 300:
+            output_size = (450, 200)
+            img.thumbnail(output_size)
+            in_mem_file = io.BytesIO()
+            img.save(in_mem_file, format='PNG')
+            img_write = storage.open(self.image.name, 'w+')
+            img_write.write(in_mem_file.getvalue())
+            img_write.close()
+
+        img_read.close()
