@@ -1,9 +1,11 @@
+import os
+
 from django.contrib import messages
 from django.urls import reverse
 from django.views.generic import CreateView
 from django_filters.views import FilterView
 
-from app.constants import THANK_YOU_MESSAGE
+from app.constants import THANK_YOU_MESSAGE, DEFAULT_ORDER_BY, DEFAULT_PAGINATED_BY
 from app.filters import ServiceUnitFilter
 from app.helpers import BaseHelper
 from app.models import ServiceUnit
@@ -15,8 +17,9 @@ class ServiceUnitListView(FilterView):
     """
     template_name_suffix = '_list'
     filterset_class = ServiceUnitFilter
-    ordering = '-created_at'
+    ordering = DEFAULT_ORDER_BY
     queryset = ServiceUnit.objects.filter(verified=True)
+    paginate_by = os.environ.get('PAGINATED_BY') or DEFAULT_PAGINATED_BY
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(ServiceUnitListView, self).get_context_data(**kwargs)

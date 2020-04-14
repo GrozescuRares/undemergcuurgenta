@@ -338,3 +338,6 @@ CATEGORIES = (
 )
 
 THANK_YOU_MESSAGE = 'Multumim pentru sugestie! Vom analiza {0} din {1} cat de repede posibil.'
+
+DEFAULT_PAGINATED_BY = 3
+DEFAULT_ORDER_BY = '-created_at'
