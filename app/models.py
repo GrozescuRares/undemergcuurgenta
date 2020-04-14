@@ -36,7 +36,7 @@ class ServiceUnit(BaseModel):
     image = models.ImageField(default='default.jpg', upload_to='pictures')
     schedule = models.CharField(max_length=250)
     link = models.URLField(max_length=500)
-    address = models.CharField(max_length=250, null=True)
+    address = models.CharField(max_length=250)
     verified = models.BooleanField(default=False)
 
     def __str__(self):

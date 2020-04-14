@@ -69,29 +69,29 @@
         <ul class="row search-results-items">
             {% for service_unit in object_list %}
                 <li class="col-lg-4 col-md-6 search-item mb-15">
-                <div class="search-item-wrapper">
-                    <img alt="" class="img-thumb" src="{{ service_unit.image.url }}">
-                    <div class="content-wrapper">
-                        <ul class="tag-list mb-3">
-                            <li class="tag-item">{{ service_unit.location }}</li>
-                            <li class="tag-item">{{ service_unit.category }}</li>
-                            <li class="tag-item">{{ service_unit.tags }}</li>
-                        </ul>
-                        <h3 class="font-xl font-primary withPrimaryColor font-bold mb-5 mt-0 text-center">{{ service_unit.name }}</h3>
-                        <p class="schedule">
-                            <img src="{% static 'app/images/calendar.svg' %}" class="img-fluid" alt="">
-                            {{ service_unit.schedule }}
-                        </p>
-                        <p class="verify">
-                            <img src="{% static 'app/images/check.svg' %}" alt="">
-                            Verificat
-                        </p>
-                        <div class="text-center mt-auto">
-                            <a href="{{ service_unit.link }}" class="btn btn-secondary" target="_blank">Detalii suplimentare</a>
+                    <div class="search-item-wrapper">
+                        <img alt="" class="img-thumb" src="{{ service_unit.image.url }}">
+                        <div class="content-wrapper">
+                            <ul class="tag-list mb-3">
+                                <li class="tag-item">{{ service_unit.location }}</li>
+                                <li class="tag-item">{{ service_unit.category }}</li>
+                            </ul>
+                            <h3 class="font-xl font-primary withPrimaryColor font-bold mb-5 mt-0 text-center">{{ service_unit.name }}</h3>
+                            <p class="schedule">
+                                <img src="{% static 'app/images/calendar.svg' %}" class="img-fluid" alt="">
+                                {{ service_unit.address }}
+                            </p>
+                            <p class="verify">
+                                <img src="{% static 'app/images/check.svg' %}" alt="">
+                                Verificat
+                            </p>
+                            <div class="text-center mt-auto">
+                                <a href="{% url 'service-unit-detail' service_unit.id %}" class="btn btn-secondary" target="_blank">Detalii
+                                    suplimentare</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </li>
+                </li>
             {% endfor %}
         </ul>
 

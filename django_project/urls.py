@@ -18,12 +18,13 @@ from django.urls import path, re_path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-from app.views import ServiceUnitListView, ServiceUnitCreateView
+from app.views import ServiceUnitListView, ServiceUnitCreateView, ServiceUnitDetailView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     re_path('djga/', include('google_analytics.urls')),
     path('', ServiceUnitListView.as_view(), name='service-units'),
+    path('service-unit/<int:pk>', ServiceUnitDetailView.as_view(), name='service-unit-detail'),
     path('service-unit/create', ServiceUnitCreateView.as_view(), name='service-unit-create'),
 ]
 
