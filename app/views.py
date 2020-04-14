@@ -1,6 +1,7 @@
 import os
 
 from django.contrib import messages
+from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views.generic import CreateView, DetailView
 from django_filters.views import FilterView
@@ -46,3 +47,6 @@ class ServiceUnitCreateView(CreateView):
 
 class ServiceUnitDetailView(DetailView):
     model = ServiceUnit
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(ServiceUnit, pk=self.kwargs['pk'], verified=True)
