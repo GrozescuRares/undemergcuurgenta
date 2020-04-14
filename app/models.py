@@ -16,12 +16,17 @@ class BaseModel(models.Model):
         return self.name
 
 
+class OrderedByNameManager(models.Manager):
+    def get_queryset(self):
+        return super(OrderedByNameManager, self).get_queryset().order_by('name')
+
+
 class ServiceUnitLocation(BaseModel):
-    pass
+    objects = OrderedByNameManager()
 
 
 class ServiceUnitCategory(BaseModel):
-    pass
+    objects = OrderedByNameManager()
 
 
 class ServiceUnit(BaseModel):
