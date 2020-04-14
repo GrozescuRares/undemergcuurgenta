@@ -341,3 +341,8 @@ THANK_YOU_MESSAGE = 'Multumim pentru sugestie! Vom analiza {0} din {1} cat de re
 
 DEFAULT_PAGINATED_BY = 3
 DEFAULT_ORDER_BY = '-created_at'
+
+SERVICE_UNIT_CREATE_MAIL_SUBJECT = 'Sugestie primita'
+SERVICE_UNIT_CREATE_MAIL_MESSAGE = 'Am inregistrat o sugestie pentru {0} din {1}.'
+
+MAIL_SENT_TO_SEPARATOR = '|'

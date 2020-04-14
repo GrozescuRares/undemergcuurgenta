@@ -1,15 +1,23 @@
-import os
+from smtplib import SMTPException
 
 from django.contrib import messages
+from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views.generic import CreateView, DetailView
 from django_filters.views import FilterView
 
-from app.constants import THANK_YOU_MESSAGE, DEFAULT_ORDER_BY, DEFAULT_PAGINATED_BY
+from app.constants import (
+    THANK_YOU_MESSAGE,
+    DEFAULT_ORDER_BY,
+    SERVICE_UNIT_CREATE_MAIL_SUBJECT,
+    SERVICE_UNIT_CREATE_MAIL_MESSAGE,
+    MAIL_SENT_TO_SEPARATOR,
+)
 from app.filters import ServiceUnitFilter
 from app.helpers import BaseHelper
 from app.models import ServiceUnit
+from django_project.settings import EMAIL_HOST_USER, PAGINATED_BY, EMAIL_SEND_TO
 
 
 class ServiceUnitListView(FilterView):
@@ -20,7 +28,7 @@ class ServiceUnitListView(FilterView):
     filterset_class = ServiceUnitFilter
     ordering = DEFAULT_ORDER_BY
     queryset = ServiceUnit.objects.filter(verified=True)
-    paginate_by = os.environ.get('PAGINATED_BY') or DEFAULT_PAGINATED_BY
+    paginate_by = PAGINATED_BY
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(ServiceUnitListView, self).get_context_data(**kwargs)
@@ -41,6 +49,15 @@ class ServiceUnitCreateView(CreateView):
 
     def form_valid(self, form):
         messages.success(self.request, THANK_YOU_MESSAGE.format(form.cleaned_data['name'], form.cleaned_data['location'].name))
+        try:
+            send_mail(
+                SERVICE_UNIT_CREATE_MAIL_SUBJECT,
+                SERVICE_UNIT_CREATE_MAIL_MESSAGE.format(form.cleaned_data['name'], form.cleaned_data['location'].name),
+                EMAIL_HOST_USER,
+                EMAIL_SEND_TO.split(MAIL_SENT_TO_SEPARATOR),
+            )
+        except SMTPException:
+            pass
 
         return super().form_valid(form)
 

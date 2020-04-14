@@ -14,6 +14,8 @@ import os
 import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from app.constants import DEFAULT_PAGINATED_BY
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -141,5 +143,15 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 GOOGLE_ANALYTICS = {
     'google_analytics_id': os.environ.get('GOOGLE_ANALYTICS_CODE'),
 }
+
+PAGINATED_BY = os.environ.get('PAGINATED_BY') or DEFAULT_PAGINATED_BY
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_SEND_TO = os.environ.get('EMAIL_SEND_TO') or 'grozescurares@yahoo.com'
 
 django_heroku.settings(locals())
