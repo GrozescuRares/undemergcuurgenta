@@ -62,6 +62,21 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="font-lg font-primary withPrimaryColor font-bold mb-0 pl-3">
+                                    Adresa
+                                </label>
+                                {% if form.address.errors %}
+                                    {{ form.address|add_class:"form-control" }}
+                                    <div class="pl-3 withSecondaryColor">
+                                        {{ form.address.errors }}
+                                    </div>
+                                {% else %}
+                                    {{ form.address }}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="font-lg font-primary withPrimaryColor font-bold mb-0 pl-3">
                                     Program de functionare
                                 </label>
                                 {% if form.schedule.errors %}
