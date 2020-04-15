@@ -1,5 +1,6 @@
 {% extends 'app/base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}
     <div class="row justify-content-center search-results-items">
@@ -23,7 +24,7 @@
                     </p>
                     <p class="verify">
                         <img src="{% static 'app/images/check.svg' %}" alt="">
-                        Verificat
+                        {% language 'ro-ro' %} {{ object.created_at }} {% endlanguage %}
                     </p>
                     <div class="text-center mt-auto">
                         <a href="{{ object.link }}" class="btn btn-secondary" target="_blank">Link catre site / social
