@@ -1,107 +1,102 @@
 {% extends 'app/base.html' %}
-{% block content %}
 {% load static %}
 {% load i18n %}
 {% load social_share %}
 
-<section class="withBackgroundColor withBackgroundImage" style="background-image: url({% static 'app/images/icon.svg' %})">
-    <div class="section section-search container">
-        <div>
-            <div class="section-content mb-6">
-                <h3 class="heading font-md font-bold withSecondaryColor mb-3">Esti curios unde gasesti ceva ?</h3>
-                <h1 class="heading font-1xl font-bold withPrimaryColor mb-4">Unde gasesc, e aici sa te ajute</h1>
-                <p>
-                    Pentru ca stim cat e de greu sa gasesti lucruri sau servicii de care ai nevoie in <strong class="withSecondaryColor">aceasta perioada</strong>, noi am incercat sa punem totul intr-un singur loc.
-                    <br>
-                    Stii si tu un loc in care se pot gasi lucruri sau care ofera anumite servicii?
-                    <a class="btn btn-primary btn-small align-top" href="{% url 'service-unit-create' %}">Anunta-ne</a>
-                    <br>
-                    Vrei sa ne ajuti sa strangem cat mai multe date? <strong class="withSecondaryColor"> Da de stire pe </strong>{% post_to_facebook 'http://www.undegasescacum.ro' %}
-                </p>
-            </div>
-            <form method="get" class="section-search-form">
-                <div class="form-group-wrapper">
-                    <div class="form-group">
-                        <label class="font-lg font-primary withPrimaryColor font-bold mb-1 pl-1">Unde gasesc:</label>
-                        {{ filter.form.category }}
-                    </div>
-                    <div class="form-group">
-                        <label class="font-lg font-primary withPrimaryColor font-bold mb-1 pl-1">in:</label>
-                        {{ filter.form.location }}
-                    </div>
+{% block content %}
+    <section class="withBackgroundColor withBackgroundImage" style="background-image: url({% static 'app/images/icon.svg' %})">
+        <div class="section section-search container">
+            <div>
+                <div class="section-content mb-6">
+                    <h3 class="heading font-md font-bold withSecondaryColor mb-3">Esti curios unde gasesti ceva ?</h3>
+                    <h1 class="heading font-1xl font-bold withPrimaryColor mb-4">Unde gasesc, e aici sa te ajute</h1>
+                    <p>
+                        Pentru ca stim cat e de greu sa gasesti lucruri sau servicii de care ai nevoie in <strong class="withSecondaryColor">aceasta perioada</strong>, noi am incercat sa punem totul intr-un singur loc.
+                        <br>
+                        Stii si tu un loc in care se pot gasi lucruri sau care ofera anumite servicii?
+                        <a class="btn btn-primary btn-small align-top" href="{% url 'service-unit-create' %}">Anunta-ne</a>
+                        <br>
+                        Vrei sa ne ajuti sa strangem cat mai multe date? <strong class="withSecondaryColor"> Da de stire pe </strong>{% post_to_facebook 'http://www.undegasescacum.ro' %}
+                    </p>
                 </div>
-                <button class="btn btn-primary mr-4" type="submit">Cauta</button>
-                <button class="btn btn-danger" id="clear_filters">Sterge filtrele</button>
-            </form>
-        </div>
-    </div>
-</section>
-
-<section class="container">
-    <div class="section-results-counter section">
-        <div class="section-results-counter-labels">
-            <h1 class="heading font-1xl mobile-font-xl font-bold withPrimaryColor mb-0">Momentan avem date pentru:</h1>
-            <i>Ultima actualizare: <strong>{% language 'ro-ro' %} {{ filter.qs.first.created_at}} {% endlanguage %}</strong></i>
-        </div>
-        <div class="section-results-item section-results-category">
-            <img src="{% static 'app/images/hotel.svg' %}" class="img-fluid" alt="">
-            <div>
-                <h2 class="m-0 heading font-1xl font-bold withCitiesColor">{{ unique_locations }}</h2>
-                <p class="mb-0">locatii</p>
-            </div>
-        </div>
-        <div class="section-results-item section-results-cities">
-            <img src="{% static 'app/images/category.svg' %}" class="img-fluid" alt="">
-            <div>
-                <h2 class="m-0 heading font-1xl font-bold withCategoriesColor">{{ unique_categories }}</h2>
-                <p class="mb-0">categorii</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="section container section-search-results">
-    {% if filter.qs|length == 0 %}
-    <div class="alert alert-danger">Nu avem niciun rezultat pentru filtrele aplicate 😥</div>
-
-    {% else %}
-
-    <ul class="row search-results-items">
-        {% for service_unit in filter.qs %}
-            <li class="col-lg-4 col-md-6 search-item mb-15">
-            <div class="search-item-wrapper">
-                <img alt="" class="img-thumb" src="{{ service_unit.image.url }}">
-                <div class="content-wrapper">
-                    <ul class="tag-list mb-3">
-                        <li class="tag-item">{{ service_unit.location }}</li>
-                        <li class="tag-item">{{ service_unit.category }}</li>
-                        <li class="tag-item">{{ service_unit.tags }}</li>
-                    </ul>
-                    <h3 class="font-xl font-primary withPrimaryColor font-bold mb-5 mt-0 text-center">{{ service_unit.name }}</h3>
-                    <p class="schedule">
-                        <img src="{% static 'app/images/calendar.svg' %}" class="img-fluid" alt="">
-                        {{ service_unit.schedule }}
-                    </p>
-                    <p class="verify">
-                        {% if service_unit.verified == True %}
-                        <img src="{% static 'app/images/check.svg' %}" alt="">
-                        Verificat
-                        {% else %}
-                        <img src="{% static 'app/images/cancel.svg' %}" alt="">
-                        Neverificat
-                        {% endif %}
-
-                    </p>
-                    <div class="text-center mt-auto">
-                        <a href="{{ service_unit.link }}" class="btn btn-secondary" target="_blank">Detalii suplimentare</a>
+                <form method="get" class="section-search-form">
+                    <div class="form-group-wrapper">
+                        <div class="form-group">
+                            <label class="font-lg font-primary withPrimaryColor font-bold mb-1 pl-1">Unde gasesc:</label>
+                            {{ filter.form.category }}
+                        </div>
+                        <div class="form-group">
+                            <label class="font-lg font-primary withPrimaryColor font-bold mb-1 pl-1">in:</label>
+                            {{ filter.form.location }}
+                        </div>
                     </div>
+                    <button class="btn btn-primary mr-4" type="submit">Cauta</button>
+                    <button class="btn btn-danger" id="clear_filters">Sterge filtrele</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="section-results-counter section">
+            <div class="section-results-counter-labels">
+                <h1 class="heading font-1xl mobile-font-xl font-bold withPrimaryColor mb-0">Momentan avem date pentru:</h1>
+                <i>Ultima actualizare: <strong>{% language 'ro-ro' %} {{ filter.qs.first.created_at}} {% endlanguage %}</strong></i>
+            </div>
+            <div class="section-results-item section-results-category">
+                <img src="{% static 'app/images/hotel.svg' %}" class="img-fluid" alt="">
+                <div>
+                    <h2 class="m-0 heading font-1xl font-bold withCitiesColor">{{ unique_locations }}</h2>
+                    <p class="mb-0">locatii</p>
                 </div>
             </div>
-        </li>
-        {% endfor %}
-    </ul>
+            <div class="section-results-item section-results-cities">
+                <img src="{% static 'app/images/category.svg' %}" class="img-fluid" alt="">
+                <div>
+                    <h2 class="m-0 heading font-1xl font-bold withCategoriesColor">{{ unique_categories }}</h2>
+                    <p class="mb-0">categorii</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    {% endif %}
-</section>
+    <section class="section container section-search-results">
+        {% if filter.qs|length == 0 %}
+        <div class="alert alert-danger">Nu avem niciun rezultat pentru filtrele aplicate 😥</div>
 
+        {% else %}
+
+        <ul class="row search-results-items">
+            {% for service_unit in object_list %}
+                <li class="col-lg-4 col-md-6 search-item mb-15">
+                    <div class="search-item-wrapper">
+                        <img alt="" class="img-thumb" src="{{ service_unit.image.url }}">
+                        <div class="content-wrapper">
+                            <ul class="tag-list mb-3">
+                                <li class="tag-item">{{ service_unit.location }}</li>
+                                <li class="tag-item">{{ service_unit.category }}</li>
+                            </ul>
+                            <h3 class="font-xl font-primary withPrimaryColor font-bold mb-5 mt-0 text-center">{{ service_unit.name }}</h3>
+                            <p class="schedule">
+                                <img src="{% static 'app/images/hotel.svg' %}" class="img-fluid" alt="">
+                                {{ service_unit.address }}
+                            </p>
+                            <p class="verify">
+                                <img src="{% static 'app/images/check.svg' %}" alt="">
+                                Verificat
+                            </p>
+                            <div class="text-center mt-auto">
+                                <a href="{% url 'service-unit-detail' service_unit.id %}" class="btn btn-secondary">Detalii
+                                    suplimentare</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+
+        {% endif %}
+    </section>
+
+    {% include 'app/pagination.html' %}
 {% endblock %}

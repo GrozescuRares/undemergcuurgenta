@@ -487,6 +487,10 @@ h1,h2,h3,h4,h5,h6 {
   font-size: 3rem;
 }
 
+.item-detail {
+    margin-top: 6rem;
+}
+
 @media all and (max-width: 767px) {
   .modal-success .modal-body {
     padding: 7rem 1.5rem 3rem 1.5rem;
@@ -499,11 +503,15 @@ h1,h2,h3,h4,h5,h6 {
   .modal-success .modal-body .modal-success-message {
     font-size: 2rem;
   }
+
+  .item-detail {
+    margin-top: 2rem;
+  }
 }
 
 #backToTop {
   position: fixed;
-  bottom: 3rem;
+  bottom: 7rem;
   right: 3rem;
   width: 5rem;
   height: 5rem;

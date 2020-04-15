@@ -36,12 +36,13 @@ class ServiceUnit(BaseModel):
     image = models.ImageField(default='default.jpg', upload_to='pictures')
     schedule = models.CharField(max_length=250)
     link = models.URLField(max_length=500)
+    address = models.CharField(max_length=250)
     verified = models.BooleanField(default=False)
 
     def __str__(self):
         status = 'Aprobat' if self.verified else 'Trebuie verificat'
 
-        return f"Nume: {self.name}; Categoria: {self.category.name}; Locatia: {self.location.name}; Status: { status }."
+        return f"Nume: {self.name}; Categoria: {self.category.name}; Locatia: {self.location.name}; Adresa: {self.address}; Status: { status }."
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
