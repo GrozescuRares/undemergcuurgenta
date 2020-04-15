@@ -83,7 +83,7 @@
                             </p>
                             <p class="verify">
                                 <img src="{% static 'app/images/check.svg' %}" alt="">
-                                Verificat
+                                {% language 'ro-ro' %} {{ service_unit.created_at }} {% endlanguage %}
                             </p>
                             <div class="text-center mt-auto">
                                 <a href="{% url 'service-unit-detail' service_unit.id %}" class="btn btn-secondary">Detalii
