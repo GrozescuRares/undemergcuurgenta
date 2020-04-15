@@ -3,140 +3,144 @@
 {% load add_class %}
 
 {% block content %}
-<section class="withBackgroundColor contact-form">
-    {% include 'app/back_button.html' %}
-    <div class="container">
-        <div class="row">
+    <section class="withBackgroundColor contact-form">
+{#        {% include 'app/back_button.html' %}#}
+        <div class="container">
+            <div class="row">
 
-            <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-                {% language 'ro-ro' %}
-                <form method="post" enctype="multipart/form-data" class="was-validated">
-                        <h1 class="heading font-1xl font-bold withSecondaryColor mb-4">Detalii despre loc</h1>
-                    <br>
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <label class="font-lg font-primary withPrimaryColor font-bold mb-0 pl-3">
-                            Nume
-                        </label>
-                        {% if form.name.errors %}
-                            {{ form.name|add_class:"form-control" }}
-                            <div class="pl-3 withSecondaryColor">
-                                {{ form.name.errors }}
-                            </div>
-                        {% else %}
-                            {{ form.name }}
-                        {% endif %}
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
+                <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+                    {% language 'ro-ro' %}
+                        <form method="post" enctype="multipart/form-data" class="was-validated">
+                            <h1 class="heading font-1xl font-bold withSecondaryColor mb-4">Detalii despre loc</h1>
+                            <br>
+                            {% csrf_token %}
                             <div class="form-group">
                                 <label class="font-lg font-primary withPrimaryColor font-bold mb-0 pl-3">
-                                    Locatie
+                                    Nume
                                 </label>
-                                {% if form.location.errors %}
-                                    {{ form.location|add_class:"form-control" }}
+                                {% if form.name.errors %}
+                                    {{ form.name|add_class:"form-control" }}
                                     <div class="pl-3 withSecondaryColor">
-                                        {{ form.location.errors }}
+                                        {{ form.name.errors }}
                                     </div>
                                 {% else %}
-                                    {{ form.location }}
+                                    {{ form.name }}
                                 {% endif %}
                             </div>
-                        </div>
-                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="font-lg font-primary withPrimaryColor font-bold mb-0 pl-3">
+                                            Locatie
+                                        </label>
+                                        {% if form.location.errors %}
+                                            {{ form.location|add_class:"form-control" }}
+                                            <div class="pl-3 withSecondaryColor">
+                                                {{ form.location.errors }}
+                                            </div>
+                                        {% else %}
+                                            {{ form.location }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="font-lg font-primary withPrimaryColor font-bold mb-0 pl-3">
+                                            Categorie
+                                        </label>
+                                        {% if form.category.errors %}
+                                            {{ form.category|add_class:"form-control" }}
+                                            <div class="pl-3 withSecondaryColor">
+                                                {{ form.category.errors }}
+                                            </div>
+                                        {% else %}
+                                            {{ form.category }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="font-lg font-primary withPrimaryColor font-bold mb-0 pl-3">
+                                            Adresa
+                                        </label>
+                                        {% if form.address.errors %}
+                                            {{ form.address|add_class:"form-control" }}
+                                            <div class="pl-3 withSecondaryColor">
+                                                {{ form.address.errors }}
+                                            </div>
+                                        {% else %}
+                                            {{ form.address }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="font-lg font-primary withPrimaryColor font-bold mb-0 pl-3">
+                                            Program de functionare
+                                        </label>
+                                        {% if form.schedule.errors %}
+                                            {{ form.schedule|add_class:"form-control" }}
+                                            <div class="pl-3 withSecondaryColor">
+                                                {{ form.schedule.errors }}
+                                            </div>
+                                        {% else %}
+                                            {{ form.schedule }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="font-lg font-primary withPrimaryColor font-bold mb-0 pl-3">
+                                            Link site / social media
+                                        </label>
+                                        {% if form.link.errors %}
+                                            {{ form.link|add_class:"form-control" }}
+                                            <div class="pl-3 withSecondaryColor">
+                                                {{ form.link.errors }}
+                                            </div>
+                                        {% else %}
+                                            {{ form.link }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="font-lg font-primary withPrimaryColor font-bold mb-0 pl-3">
+                                            Imagine / Logo
+                                        </label>
+                                        {% if form.image.errors %}
+                                            {{ form.image|add_class:"form-control" }}
+                                            <div class="pl-3 withSecondaryColor">
+                                                {{ form.image.errors }}
+                                            </div>
+                                        {% else %}
+                                            {{ form.image }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label class="font-lg font-primary withPrimaryColor font-bold mb-0 pl-3">
-                                    Categorie
+                                    Ce se gaseste acolo
                                 </label>
-                                {% if form.category.errors %}
-                                    {{ form.category|add_class:"form-control" }}
+                                {% if form.tags.errors %}
+                                    {{ form.tags|add_class:"form-control" }}
                                     <div class="pl-3 withSecondaryColor">
-                                        {{ form.category.errors }}
+                                        {{ form.tags.errors }}
                                     </div>
                                 {% else %}
-                                    {{ form.category }}
+                                    {{ form.tags }}
                                 {% endif %}
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="font-lg font-primary withPrimaryColor font-bold mb-0 pl-3">
-                                    Adresa
-                                </label>
-                                {% if form.address.errors %}
-                                    {{ form.address|add_class:"form-control" }}
-                                    <div class="pl-3 withSecondaryColor">
-                                        {{ form.address.errors }}
-                                    </div>
-                                {% else %}
-                                    {{ form.address }}
-                                {% endif %}
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="font-lg font-primary withPrimaryColor font-bold mb-0 pl-3">
-                                    Program de functionare
-                                </label>
-                                {% if form.schedule.errors %}
-                                    {{ form.schedule|add_class:"form-control" }}
-                                    <div class="pl-3 withSecondaryColor">
-                                        {{ form.schedule.errors }}
-                                    </div>
-                                {% else %}
-                                    {{ form.schedule }}
-                                {% endif %}
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="font-lg font-primary withPrimaryColor font-bold mb-0 pl-3">
-                                    Link site / social media
-                                </label>
-                                {% if form.link.errors %}
-                                    {{ form.link|add_class:"form-control" }}
-                                    <div class="pl-3 withSecondaryColor">
-                                        {{ form.link.errors }}
-                                    </div>
-                                {% else %}
-                                    {{ form.link }}
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="font-lg font-primary withPrimaryColor font-bold mb-0 pl-3">
-                            Imagine / Logo
-                        </label>
-                        {% if form.image.errors %}
-                            {{ form.image|add_class:"form-control" }}
-                            <div class="pl-3 withSecondaryColor">
-                                {{ form.image.errors }}
-                            </div>
-                        {% else %}
-                            {{ form.image }}
-                        {% endif %}
-                    </div>
-                    <div class="form-group">
-                        <label class="font-lg font-primary withPrimaryColor font-bold mb-0 pl-3">
-                            Ce se gaseste acolo
-                        </label>
-                        {% if form.tags.errors %}
-                            {{ form.tags|add_class:"form-control" }}
-                            <div class="pl-3 withSecondaryColor">
-                                {{ form.tags.errors }}
-                            </div>
-                        {% else %}
-                            {{ form.tags }}
-                        {% endif %}
-                    </div>
-                    <input type="submit" class="btn btn-primary mx-auto d-block" value="Trimite">
-                </form>
-                {% endlanguage %}
+                            <input type="submit" class="btn btn-primary mx-auto d-block" value="Trimite">
+                        </form>
+                    {% endlanguage %}
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 {% endblock %}

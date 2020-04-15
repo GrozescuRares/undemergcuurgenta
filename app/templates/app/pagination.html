@@ -1,19 +1,52 @@
 {% load param_replace %}
 
 {% if is_paginated %}
-    {% if page_obj.has_previous %}
-        <a href="?{% param_replace page=1 %}">First</a>
-        {% if page_obj.previous_page_number != 1 %}
-            <a href="?{% param_replace page=page_obj.previous_page_number %}">Previous</a>
-        {% endif %}
-    {% endif %}
+    <nav aria-label="navigation" class="mt-2 mb-15">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?{% param_replace page=1 %}">&laquo;&laquo;</a>
+                </li>
+                <li class="page-item">
+                    <a href="?{% param_replace page=page_obj.previous_page_number %}"
+                       class="page-link previous">&laquo; Inapoi </a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <span class="page-link previous">&laquo;&laquo;</span>
 
-    Page {{ page_obj.number }} of {{ paginator.num_pages }}
-
-    {% if page_obj.has_next %}
-        {% if page_obj.next_page_number != paginator.num_pages %}
-            <a href="?{% param_replace page=page_obj.next_page_number %}">Next</a>
-        {% endif %}
-        <a href="?{% param_replace page=paginator.num_pages %}">Last</a>
-    {% endif %}
+                </li>
+                <li class="page-item disabled">
+                    <span class="page-link previous">&laquo; Inapoi </span>
+                </li>
+            {% endif %}
+            {% for page_for_counter in paginator.page_range %}
+                {% if page_for_counter == page_obj.number %}
+                    <li class="page-item active">
+                        <span class="page-link">{{ page_for_counter }}</span>
+                    </li>
+                {% elif page_for_counter > page_obj.number|add:max_pages_to_left and page_for_counter < page_obj.number|add:max_pages_to_right %}
+                    <li class="page-item">
+                        <a href="?{% param_replace page=page_for_counter %}" class="page-link">{{ page_for_counter }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+            {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a href="?{% param_replace page=page_obj.next_page_number %}"
+                       class="page-link next">Inainte &raquo;</a>
+                </li>
+                <li class="page-item"></li>
+                <a class="page-link next" href="?{% param_replace page=paginator.num_pages %}">&raquo;&raquo;</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <span class="page-link next">Inainte &raquo;</span>
+                </li>
+                <li class="page-item disabled">
+                    <span class="page-link">&raquo;&raquo;</span>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
 {% endif %}

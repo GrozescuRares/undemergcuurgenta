@@ -341,6 +341,8 @@ THANK_YOU_MESSAGE = 'Multumim pentru sugestie! Vom analiza {0} din {1} cat de re
 
 DEFAULT_PAGINATED_BY = 3
 DEFAULT_ORDER_BY = '-created_at'
+PAGINATION_MAX_PAGES_TO_LEFT = '-3'
+PAGINATION_MAX_PAGES_TO_RIGHT = '3'
 
 SERVICE_UNIT_CREATE_MAIL_SUBJECT = 'Sugestie primita'
 SERVICE_UNIT_CREATE_MAIL_MESSAGE = 'Am inregistrat o sugestie pentru {0} din {1}.'

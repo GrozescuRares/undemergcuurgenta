@@ -13,6 +13,8 @@ from app.constants import (
     SERVICE_UNIT_CREATE_MAIL_SUBJECT,
     SERVICE_UNIT_CREATE_MAIL_MESSAGE,
     MAIL_SENT_TO_SEPARATOR,
+    PAGINATION_MAX_PAGES_TO_LEFT,
+    PAGINATION_MAX_PAGES_TO_RIGHT,
 )
 from app.filters import ServiceUnitFilter
 from app.helpers import BaseHelper
@@ -35,6 +37,8 @@ class ServiceUnitListView(FilterView):
         context.update({
             'unique_locations': BaseHelper.get_unique_count(object_list, 'location', 'name'),
             'unique_categories': BaseHelper.get_unique_count(object_list, 'category', 'name'),
+            'max_pages_to_left': PAGINATION_MAX_PAGES_TO_LEFT,
+            'max_pages_to_right': PAGINATION_MAX_PAGES_TO_RIGHT,
         })
 
         return context
