@@ -11,6 +11,5 @@ services:
       - ./:/opt/undegasescacum/
     ports:
       - "8000:8000"
-    user: "1000:1000"
     env_file:
       - .env

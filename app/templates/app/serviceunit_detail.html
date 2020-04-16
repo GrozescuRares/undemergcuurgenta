@@ -4,6 +4,7 @@
 
 {% block content %}
     <div class="row justify-content-center search-results-items">
+        {% include 'app/back_button.html' %}
         <div class="search-item col-lg-3 col-md-2">
             <div class="search-item-wrapper item-detail">
                 <img alt="" class="img-thumb" src="{{ object.image.url }}">
