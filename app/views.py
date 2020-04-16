@@ -4,7 +4,8 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
-from django.views.generic import CreateView, DetailView
+from django.views.generic import CreateView, DetailView, TemplateView
+from django.views.generic.base import ContextMixin
 from django_filters.views import FilterView
 
 from app.constants import (
@@ -44,7 +45,17 @@ class ServiceUnitListView(FilterView):
         return context
 
 
-class ServiceUnitCreateView(CreateView):
+class PreviousPageMixin(ContextMixin):
+    def get_context_data(self, **kwargs):
+        context = super(PreviousPageMixin, self).get_context_data(**kwargs)
+        context.update({
+            'previous_url': self.request.META.get('HTTP_REFERER', reverse('service-units'))
+        })
+
+        return context
+
+
+class ServiceUnitCreateView(CreateView, PreviousPageMixin):
     model = ServiceUnit
     fields = ['name', 'location', 'address', 'category', 'tags', 'schedule', 'link', 'image']
 
@@ -66,7 +77,7 @@ class ServiceUnitCreateView(CreateView):
         return super().form_valid(form)
 
 
-class ServiceUnitDetailView(DetailView):
+class ServiceUnitDetailView(DetailView, PreviousPageMixin):
     model = ServiceUnit
 
     def get_object(self, queryset=None):
